@@ -12,6 +12,8 @@
 		BD353C242288FC1C00FF12A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD353C222288FC1C00FF12A4 /* Main.storyboard */; };
 		BD353C262288FC1D00FF12A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD353C252288FC1D00FF12A4 /* Assets.xcassets */; };
 		BD353C292288FC1D00FF12A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD353C272288FC1D00FF12A4 /* LaunchScreen.storyboard */; };
+		BD353C352289351700FF12A4 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD353C342289351700FF12A4 /* HomeController.swift */; };
+		BD353C382289440F00FF12A4 /* Coldplay.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BD353C372289440F00FF12A4 /* Coldplay.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		BD353C252288FC1D00FF12A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD353C282288FC1D00FF12A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD353C2A2288FC1D00FF12A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD353C342289351700FF12A4 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		BD353C372289440F00FF12A4 /* Coldplay.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Coldplay.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,40 @@
 		BD353C1D2288FC1C00FF12A4 /* Calmness App */ = {
 			isa = PBXGroup;
 			children = (
+				BD353C362289440000FF12A4 /* Sound */,
+				BD353C31228929FB00FF12A4 /* Controller */,
+				BD353C302288FC2800FF12A4 /* Storyboard */,
 				BD353C1E2288FC1C00FF12A4 /* AppDelegate.swift */,
-				BD353C202288FC1C00FF12A4 /* ViewController.swift */,
-				BD353C222288FC1C00FF12A4 /* Main.storyboard */,
 				BD353C252288FC1D00FF12A4 /* Assets.xcassets */,
-				BD353C272288FC1D00FF12A4 /* LaunchScreen.storyboard */,
 				BD353C2A2288FC1D00FF12A4 /* Info.plist */,
 			);
 			path = "Calmness App";
+			sourceTree = "<group>";
+		};
+		BD353C302288FC2800FF12A4 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				BD353C222288FC1C00FF12A4 /* Main.storyboard */,
+				BD353C272288FC1D00FF12A4 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		BD353C31228929FB00FF12A4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BD353C202288FC1C00FF12A4 /* ViewController.swift */,
+				BD353C342289351700FF12A4 /* HomeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BD353C362289440000FF12A4 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				BD353C372289440F00FF12A4 /* Coldplay.m4a */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +152,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD353C382289440F00FF12A4 /* Coldplay.m4a in Resources */,
 				BD353C292288FC1D00FF12A4 /* LaunchScreen.storyboard in Resources */,
 				BD353C262288FC1D00FF12A4 /* Assets.xcassets in Resources */,
 				BD353C242288FC1C00FF12A4 /* Main.storyboard in Resources */,
@@ -137,6 +168,7 @@
 			files = (
 				BD353C212288FC1C00FF12A4 /* ViewController.swift in Sources */,
 				BD353C1F2288FC1C00FF12A4 /* AppDelegate.swift in Sources */,
+				BD353C352289351700FF12A4 /* HomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
