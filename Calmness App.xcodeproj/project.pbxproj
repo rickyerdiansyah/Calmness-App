@@ -13,11 +13,14 @@
 		BD353C262288FC1D00FF12A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD353C252288FC1D00FF12A4 /* Assets.xcassets */; };
 		BD353C292288FC1D00FF12A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD353C272288FC1D00FF12A4 /* LaunchScreen.storyboard */; };
 		BD353C352289351700FF12A4 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD353C342289351700FF12A4 /* HomeController.swift */; };
-		BD353C382289440F00FF12A4 /* Coldplay.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BD353C372289440F00FF12A4 /* Coldplay.m4a */; };
+		BD8ABBF5229946FB00A1F5EC /* MyBokeh.sks in Resources */ = {isa = PBXBuildFile; fileRef = BD8ABBF4229946FB00A1F5EC /* MyBokeh.sks */; };
+		BD8ABC06229A6CE900A1F5EC /* MyFireflies.sks in Resources */ = {isa = PBXBuildFile; fileRef = BD8ABC05229A6CE900A1F5EC /* MyFireflies.sks */; };
+		BD8ABC08229A6E2600A1F5EC /* forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BD8ABC07229A6E2600A1F5EC /* forest.mp3 */; };
+		BDAACC7D229AD1FE00EEEACC /* afternoon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDAACC7C229AD1FE00EEEACC /* afternoon.mp3 */; };
 		BDAEDAC8229825DD00A54840 /* MyRain.sks in Resources */ = {isa = PBXBuildFile; fileRef = BDAEDAC7229825DD00A54840 /* MyRain.sks */; };
-		BDCC71B72293A589000D91CD /* morning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDCC71B62293A588000D91CD /* morning.mp3 */; settings = {ASSET_TAGS = (0, ); }; };
-		BDCC71B92293A591000D91CD /* night.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDCC71B82293A591000D91CD /* night.mp3 */; settings = {ASSET_TAGS = (1, ); }; };
-		BDCC71BB2293A599000D91CD /* rain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDCC71BA2293A599000D91CD /* rain.mp3 */; settings = {ASSET_TAGS = (2, ); }; };
+		BDCC71B72293A589000D91CD /* morning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDCC71B62293A588000D91CD /* morning.mp3 */; };
+		BDCC71B92293A591000D91CD /* night.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDCC71B82293A591000D91CD /* night.mp3 */; };
+		BDCC71BB2293A599000D91CD /* rain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDCC71BA2293A599000D91CD /* rain.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +32,10 @@
 		BD353C282288FC1D00FF12A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD353C2A2288FC1D00FF12A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD353C342289351700FF12A4 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		BD353C372289440F00FF12A4 /* Coldplay.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Coldplay.m4a; sourceTree = "<group>"; };
+		BD8ABBF4229946FB00A1F5EC /* MyBokeh.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyBokeh.sks; sourceTree = "<group>"; };
+		BD8ABC05229A6CE900A1F5EC /* MyFireflies.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyFireflies.sks; sourceTree = "<group>"; };
+		BD8ABC07229A6E2600A1F5EC /* forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = forest.mp3; sourceTree = "<group>"; };
+		BDAACC7C229AD1FE00EEEACC /* afternoon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = afternoon.mp3; sourceTree = "<group>"; };
 		BDAEDAC7229825DD00A54840 /* MyRain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyRain.sks; sourceTree = "<group>"; };
 		BDCC71B62293A588000D91CD /* morning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = morning.mp3; sourceTree = "<group>"; };
 		BDCC71B82293A591000D91CD /* night.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = night.mp3; sourceTree = "<group>"; };
@@ -73,6 +79,8 @@
 				BD353C252288FC1D00FF12A4 /* Assets.xcassets */,
 				BD353C2A2288FC1D00FF12A4 /* Info.plist */,
 				BDAEDAC7229825DD00A54840 /* MyRain.sks */,
+				BD8ABBF4229946FB00A1F5EC /* MyBokeh.sks */,
+				BD8ABC05229A6CE900A1F5EC /* MyFireflies.sks */,
 			);
 			path = "Calmness App";
 			sourceTree = "<group>";
@@ -98,10 +106,11 @@
 		BD353C362289440000FF12A4 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				BD353C372289440F00FF12A4 /* Coldplay.m4a */,
 				BDCC71B62293A588000D91CD /* morning.mp3 */,
 				BDCC71B82293A591000D91CD /* night.mp3 */,
 				BDCC71BA2293A599000D91CD /* rain.mp3 */,
+				BD8ABC07229A6E2600A1F5EC /* forest.mp3 */,
+				BDAACC7C229AD1FE00EEEACC /* afternoon.mp3 */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -171,8 +180,11 @@
 			files = (
 				BDCC71B72293A589000D91CD /* morning.mp3 in Resources */,
 				BDAEDAC8229825DD00A54840 /* MyRain.sks in Resources */,
-				BD353C382289440F00FF12A4 /* Coldplay.m4a in Resources */,
+				BDAACC7D229AD1FE00EEEACC /* afternoon.mp3 in Resources */,
 				BD353C292288FC1D00FF12A4 /* LaunchScreen.storyboard in Resources */,
+				BD8ABC08229A6E2600A1F5EC /* forest.mp3 in Resources */,
+				BD8ABBF5229946FB00A1F5EC /* MyBokeh.sks in Resources */,
+				BD8ABC06229A6CE900A1F5EC /* MyFireflies.sks in Resources */,
 				BDCC71B92293A591000D91CD /* night.mp3 in Resources */,
 				BD353C262288FC1D00FF12A4 /* Assets.xcassets in Resources */,
 				BDCC71BB2293A599000D91CD /* rain.mp3 in Resources */,

@@ -224,7 +224,7 @@ class HomeController: UIViewController {
     }
     
     func addSound(){
-        let sound = Bundle.main.path(forResource: "Coldplay", ofType: "m4a")
+        let sound = Bundle.main.path(forResource: "rain", ofType: "m4a")
         do{
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
         }catch{

@@ -37,7 +37,7 @@
                                             <rect key="frame" x="203" y="207" width="214" height="578"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vX3-pl-94C">
+                                        <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vX3-pl-94C">
                                             <rect key="frame" x="157" y="706" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="hsB-dN-bRa"/>
@@ -63,13 +63,47 @@
                                             <rect key="frame" x="334" y="726" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYc-v7-qz4" userLabel="Rain">
+                                            <rect key="frame" x="20" y="116" width="65" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="OFk-Dy-sfM"/>
+                                                <constraint firstAttribute="height" constant="65" id="VRK-Gi-WsA"/>
+                                            </constraints>
+                                            <state key="normal" image="Rain"/>
+                                            <connections>
+                                                <action selector="effectBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yir-UK-v74"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NT1-sb-Mgo" userLabel="Tree">
+                                            <rect key="frame" x="125" y="116" width="65" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="Z0Y-nG-B92"/>
+                                                <constraint firstAttribute="height" constant="65" id="diP-Zc-EsD"/>
+                                            </constraints>
+                                            <state key="normal" image="Forest"/>
+                                            <connections>
+                                                <action selector="effectBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fZI-Lg-Knk"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
+                                    <gestureRecognizers/>
                                     <constraints>
+                                        <constraint firstItem="QYc-v7-qz4" firstAttribute="leading" secondItem="f2J-zB-gCl" secondAttribute="leading" constant="20" id="5JG-H3-dsa"/>
+                                        <constraint firstAttribute="trailing" secondItem="NT1-sb-Mgo" secondAttribute="trailing" constant="224" id="7Ch-ex-MnM"/>
+                                        <constraint firstItem="NT1-sb-Mgo" firstAttribute="leading" secondItem="f2J-zB-gCl" secondAttribute="leading" constant="125" id="CKV-6K-jY6"/>
                                         <constraint firstItem="6RZ-r8-RvW" firstAttribute="centerX" secondItem="vX3-pl-94C" secondAttribute="centerX" id="L7y-o1-ihL"/>
                                         <constraint firstItem="6RZ-r8-RvW" firstAttribute="top" secondItem="f2J-zB-gCl" secondAttribute="top" constant="60" id="Q2p-Nk-SWC"/>
+                                        <constraint firstAttribute="bottom" secondItem="QYc-v7-qz4" secondAttribute="bottom" constant="715" id="bfo-Kw-vPr"/>
                                         <constraint firstItem="6RZ-r8-RvW" firstAttribute="centerX" secondItem="f2J-zB-gCl" secondAttribute="centerX" id="cOn-Qa-PYl"/>
+                                        <constraint firstItem="QYc-v7-qz4" firstAttribute="top" secondItem="f2J-zB-gCl" secondAttribute="top" constant="116" id="eUo-hP-hk0"/>
+                                        <constraint firstItem="NT1-sb-Mgo" firstAttribute="top" secondItem="f2J-zB-gCl" secondAttribute="top" constant="116" id="hzx-ft-8N8"/>
                                         <constraint firstAttribute="bottom" secondItem="vX3-pl-94C" secondAttribute="bottom" constant="90" id="oI5-Od-nXq"/>
+                                        <constraint firstAttribute="bottom" secondItem="NT1-sb-Mgo" secondAttribute="bottom" constant="715" id="pAg-fc-Hw6"/>
+                                        <constraint firstAttribute="trailing" secondItem="QYc-v7-qz4" secondAttribute="trailing" constant="329" id="zFl-EL-F50"/>
                                     </constraints>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="AiA-ld-x6y" appends="YES" id="vAS-wx-OC0"/>
+                                    </connections>
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
@@ -106,6 +140,11 @@
                         <action selector="rightSwipe:" destination="BYZ-38-t0r" id="goM-Fc-IND"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="AiA-ld-x6y" userLabel="Remove Sprite">
+                    <connections>
+                        <action selector="doubleTap:" destination="BYZ-38-t0r" id="nyF-SQ-K07"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
         </scene>
@@ -235,9 +274,11 @@
         <image name="Calmness" width="4000" height="2525"/>
         <image name="Dashed Circle" width="152" height="152"/>
         <image name="Dashed Rectangle" width="150" height="150"/>
+        <image name="Forest" width="192" height="200"/>
         <image name="Half Circle2" width="159" height="430"/>
         <image name="Moon" width="131" height="187"/>
         <image name="Play" width="202" height="202"/>
+        <image name="Rain" width="256" height="238"/>
         <image name="Sun" width="200" height="200"/>
     </resources>
 </document>

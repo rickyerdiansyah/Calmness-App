@@ -11,6 +11,7 @@ import CoreGraphics
 import CoreMotion
 import QuartzCore
 import AVFoundation
+import SpriteKit
 
 class ViewController: UIViewController, AVAudioPlayerDelegate {
     
@@ -24,21 +25,47 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         return UIDevice.current.batteryState
     }
     
-    
     var audioPlayer: AVAudioPlayer!
-    let soundArray = ["morning", "night", "rain"]
+    let soundArray = ["rain", "forest", "morning", "night"]
+    let particleArray = ["MyRain.sks", "MyFireflies.sks"]
     
-    var tempRed = 230
-    var tempGreen = 130
-    var decreaseRed = 0
-    var decreaseGreen = 0
+    let spriteNode = SKView()
+    var spriteScene = SKScene()
+    
+    var hour: Int = 0
+    var minute: Int = 0
     var circleCurve = UIView()
-    var isHide = true
     
+    var isHide = true
+    var isClicked = false
+    var selectedSound: String = ""
+    var selectedParticle: String = ""
     
     @IBOutlet weak var sunImg: UIImageView!
     @IBOutlet weak var moonImg: UIImageView!
     
+    @IBAction func effectBtn(_ sender: UIButton) {
+        //audioPlayer.numberOfLoops = -1
+        selectedSound = soundArray[sender.tag]
+        selectedParticle = particleArray[sender.tag]
+        
+        addParticle()
+        playSound()
+    }
+    
+    @IBAction func doubleTap(_ sender: UITapGestureRecognizer) {
+        
+    }
+    
+    /*@IBAction func rainBtn(_ sender: UIButton) {
+        selectedSound = soundArray[sender.tag-1]
+        playSound()
+        if isClicked == false{
+            removeFromParent()
+            isClicked = true
+        }
+        addParticle(effectName: "MyRain.sks")
+    }*/
     
     
     @IBAction func unwindToViewController(_ unwindSegue: UIStoryboardSegue) {
@@ -47,7 +74,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     @IBAction func rightSwipe(_ sender: UISwipeGestureRecognizer) {
-         performSegue(withIdentifier: "nextPage", sender: self)
+         //performSegue(withIdentifier: "nextPage", sender: self)
     }
    
     @IBOutlet weak var timeLbl: UILabel!
@@ -56,27 +83,30 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var halfCircle: UIImageView!
     
     @IBAction func enterAction(_ sender: UIButton) {
-        performSegue(withIdentifier: "nextPage", sender: self)
+        //performSegue(withIdentifier: "nextPage", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSound()
-        pluggedIn()
+        timeLapse()
+        backgroundImg.gradientLayer()
+        //audioPlayer.numberOfLoops = -1
+        //playSound()
+        //addParticle(effectName: "MyRain.sks")
         //backgroundImg.gradientLayer()
-        backgroundImg.gradientLayer(red: 230, green: 130, blue: 0, alpha: 1.0)
-        //self.originalImageView.image = [UIImageEffects, imageByApplyingLightEffectToImage: [UIImage imageNamed:@"yourImage.png"]]
-        
+        //backgroundImg.gradientLayer(red: 0, green: 130, blue: 255, alpha: 1.0)
+        /*
         //circle2(pos: CGPoint(x: 90, y: 120))
         //circle2(pos: CGPoint(x: view.frame.size.width/2, y: view.frame.size.height/2))
         //addCurve(pos: CGPoint(x: 500, y: 500))
         //clock()
-        timeLapse()
+        
         //parallax()
         //createCircle(pos: CGPoint(x: view.frame.size.width/2, y: view.frame.size.height/2))
         //createCurve(pos: CGPoint(x: 500, y: 500))
         //enterBtn.bounce()
         //sunImg.sunMoonRotation()
+         */
         sunImg.layer.shadowColor = UIColor.black.cgColor
         sunImg.layer.shadowOffset = CGSize(width: 4, height: 4)
         sunImg.layer.shadowRadius = 5.0
@@ -108,18 +138,41 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
          let circleCenter = touch.location(in: view)
          createCircle(pos: circleCenter)
          }*/
-    }
-    
-    func pluggedIn(){
-        if UIDevice.current.batteryState == .charging{
-            enterBtn.bounce()
-            backgroundImg.gradientLayer(red: 120/255, green: 100/255, blue: 30/255, alpha: 1)
+        
+            //let location = touch.location(in: spriteNode)
+        spriteNode.removeFromSuperview()
+        if hour >= 7 && hour < 18{
+            selectedSound = "morning"
+            playSound()
         }
         
-        if UIDevice.current.batteryState == .full{
-            enterBtn.bounce()
-            backgroundImg.gradientLayer(red: 40/255, green: 100/255, blue: 230/255, alpha: 1)
+        if hour < 7 && hour > 18{
+            selectedSound = "night"
+            playSound()
         }
+            //spriteScene.removeFromParent()
+        
+    }
+    
+    
+    func addParticle(){
+        //spriteNode.frame = view.bounds
+        spriteNode.frame = backgroundImg.bounds
+        spriteNode.backgroundColor = .clear
+        view.addSubview(spriteNode)
+        
+        //spriteScene = SKScene(size: view.bounds.size)
+        spriteScene = SKScene(size: backgroundImg.bounds.size)
+        spriteScene.scaleMode = .aspectFit
+        spriteScene.backgroundColor = .clear
+        spriteScene.isUserInteractionEnabled = true
+        //let particle = SKEmitterNode(fileNamed: "MyRain.sks")
+        let particle = SKEmitterNode(fileNamed: selectedParticle)
+        particle?.position = spriteNode.center
+        
+        spriteScene.addChild(particle!)
+        spriteNode.presentScene(spriteScene)
+        
     }
     
     func circle2(pos: CGPoint){
@@ -142,31 +195,23 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         view.addSubview(circle)
     }
     
-    func checkTime(){
-        
-    }
-    
-    
-    func clock(){
-        var hour: Int = 7
-        var minute: Int = 0
-        
+    /*func clock(){
         Timer.scheduledTimer(withTimeInterval: 1.2, repeats: true, block: { timer in
-            if hour < 24{
+            if self.hour < 24{
                 //self.decreaseRed += 2
                 //self.decreaseGreen += 2
-                if hour == 7{
+                if self.hour == 7{
                     self.tempRed = self.tempRed - 5
                     self.tempGreen = self.tempGreen - 5
                     if self.tempRed == 230{self.tempRed+=0}
                     if self.tempGreen == 130{self.tempGreen+=0}
                 }
                 
-                if hour == 12 {
+                if self.hour == 12 {
                     self.tempRed = self.tempRed + 10
                     self.tempGreen = self.tempGreen + 10
                 }
-                if hour == 18{
+                if self.hour == 18{
                     self.tempRed = self.tempRed - 10
                     self.tempGreen = self.tempGreen - 10
                 }
@@ -181,32 +226,28 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
                 print(self.tempRed)
                 print(self.tempGreen)
                 
-                if minute != 50{
-                    minute+=10
+                if self.minute != 50{
+                    self.minute+=10
                 }else{
-                    hour+=1
-                    minute = 0
+                    self.hour+=1
+                    self.minute = 0
                 }
-                if hour == 24{
-                    hour = 0
+                if self.hour == 24{
+                    self.hour = 0
                     self.tempRed = 0
                     self.tempGreen = 0
                 }
                 
             }
             
-            self.timeLbl.text = String(format: "%02d.%02d", hour, minute)
+            self.timeLbl.text = String(format: "%02d.%02d", self.hour, self.minute)
         })
         
-    }
+    }*/
     
     func timeLapse(){
-        var hour: Int = 7
-        var minute: Int = 0
-        var red: CGFloat = 0.0
-        var green: CGFloat = 0.0
-        var blue: CGFloat = 0.0
-        var count: Int = 0
+        hour = 7
+        minute = 0
         //gradientLayer.colors = [UIColor.init(red: 0/255, green: 100/255, blue: 255/255, alpha: 0.5).cgColor, UIColor.white.cgColor]
         // 1380+50 = 1430
         // 12.00 = red:0 green:200 blue:255
@@ -217,37 +258,51 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         //moonImg.isHidden = true
         moonImg.alpha = 0
         Timer.scheduledTimer(withTimeInterval: 1.2, repeats: true, block: { timer in
-            if hour < 24{
-                if minute != 50{
-                    minute+=10
+            if self.hour < 24{
+                if self.minute != 50{
+                    self.minute+=10
                 }else{
-                    hour+=1
-                    minute = 0
+                    self.hour+=1
+                    self.minute = 0
                 }
-                if hour == 24{
-                    hour = 0
+                if self.hour == 24{
+                    self.hour = 0
                 }
             }
             
-            if hour == 18{
+            if self.hour == 18{
                 UIView.animate(withDuration: 2, animations: {
                     //self.moonImg.isHidden = false
                     self.moonImg.alpha = 1
                     self.sunImg.alpha = 0
                     //self.sunImg.isHidden = true
+                    self.backgroundImg.gradientLayer(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+                    
                 })
-               
+                self.selectedSound = "night"
+                self.playSound()
             }
-            if hour == 7{
+            
+            if self.hour == 7{
+                self.backgroundImg.gradientLayer()
+                
                 UIView.animate(withDuration: 2, animations: {
                     self.moonImg.alpha = 0
                     self.sunImg.alpha = 1
                 })
-                
+                self.selectedSound = "morning"
+                self.playSound()
+            }
+           
+            if self.hour == 12{
+                self.backgroundImg.gradientLayer(red: 0, green: 130, blue: 255, alpha: 1.0)
+                self.selectedSound = "afternoon"
+                self.playSound()
             }
             
-            self.timeLbl.text = String(format: "%02d.%02d", hour, minute)
+            self.timeLbl.text = String(format: "%02d.%02d", self.hour, self.minute)
         })
+    
     }
     
     func parallax(){
@@ -315,14 +370,15 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         view.layer.addSublayer(shapeLayer)
     }
     
-    func addSound(){
-        let sound = Bundle.main.path(forResource: "Coldplay", ofType: "m4a")
+    func playSound(){
+        let sound = Bundle.main.url(forResource: selectedSound, withExtension: "mp3")
         do{
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            audioPlayer = try AVAudioPlayer(contentsOf: sound!)
         }catch{
             print(error)
         }
-        //audioPlayer.play()
+        audioPlayer.numberOfLoops = -1
+        audioPlayer.play()
     }
     
     
@@ -461,8 +517,8 @@ extension UIView {
     
     func gradientLayer(){
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.init(red: 0/255, green: 100/255, blue: 255/255, alpha: 0.5).cgColor, UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor]
-        //gradientLayer.colors = [UIColor.blue.cgColor, UIColor.white.cgColor]
+        //gradientLayer.colors = [UIColor.init(red: 0/255, green: 100/255, blue: 255/255, alpha: 0.5).cgColor, UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor]
+        gradientLayer.colors = [UIColor.blue.cgColor, UIColor.white.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 1)
         gradientLayer.endPoint = CGPoint(x: 0, y: 0)
         //gradientLayer.frame = view.bounds
